@@ -1,0 +1,14 @@
+
+<h1>Лабораторная работа {{ lab.id }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'labs:check' lab.id %}" method="post">
+{% csrf_token %}
+    {% for control in lab.control_set.all %}
+        <input type="hidden" name="control" id="control{{ forloop.counter }}" value="{{ control.id }}" />
+        <label for="control{{ forloop.counter }}">{{ control.control_text }}</label><br />
+      {% endfor %}
+    <input type="submit" value="Проверить" />
+</form>
+

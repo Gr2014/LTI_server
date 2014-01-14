@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'labs/style.css' %}" />
+
+{% if latest_lab_list %}
+    <ul>
+        {% for lab in latest_lab_list %}
+            <li><a href="{% url 'labs:detail' lab.id %}">{{ lab.link }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No labs are available.</p>
+{% endif %}

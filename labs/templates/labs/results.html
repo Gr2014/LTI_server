@@ -1,0 +1,14 @@
+<h1>Лабораторная работа {{ lab.id }}</h1>
+
+<ul>
+    {% for control in lab.control_set.all %}
+      <li>
+          <a>Ваш результат выполнения этой лабораторной работы составляет {{ control.checks }} % из возможных 100%. </a>
+      </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'labs:detail' lab.id %}">Проверить заново?</a>
+
+
+
